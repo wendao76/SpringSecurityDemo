@@ -17,4 +17,9 @@ public class IndexController {
     public String hello(@RequestParam String name) {
         return "hello " + name;
     }
+
+    @GetMapping("/" )
+    public String index() {
+        return "This is Spring Security Demo";
+    }
 }
