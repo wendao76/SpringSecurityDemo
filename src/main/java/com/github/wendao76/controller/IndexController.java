@@ -1,5 +1,8 @@
 package com.github.wendao76.controller;
 
+import com.github.wendao76.service.TestBeanService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -13,6 +16,12 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping
 public class IndexController {
+    @Autowired
+    TestBeanService testService;
+
+    @Value("${demo.app-name}")
+    String appName;
+
     @GetMapping("/hello")
     public String hello(@RequestParam String name) {
         return "hello " + name;
@@ -20,6 +29,6 @@ public class IndexController {
 
     @GetMapping("/" )
     public String index() {
-        return "This is Spring Security Demo";
+        return appName;
     }
 }
