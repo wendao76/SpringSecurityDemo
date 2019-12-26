@@ -5,6 +5,8 @@ import com.github.wendao76.service.ChangePropertyListener;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
+import org.springframework.cloud.client.circuitbreaker.EnableCircuitBreaker;
+import org.springframework.cloud.netflix.hystrix.EnableHystrix;
 import org.springframework.context.annotation.ComponentScan;
 
 /**
@@ -18,6 +20,8 @@ import org.springframework.context.annotation.ComponentScan;
 	"com.github.wendao76.*",
 })
 @EnableConfigurationProperties(SecurityDemoProperty.class)
+@EnableHystrix
+@EnableCircuitBreaker
 public class ApplicationDemo {
 	public static void main(String[] args) {
 		SpringApplication app = new SpringApplication(ApplicationDemo.class);
