@@ -1,5 +1,7 @@
 package com.github.wendao76.controller;
 
+import com.github.wendao76.service.TestBean;
+import com.github.wendao76.service.TestBean2;
 import com.github.wendao76.service.TestBeanService;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,12 +22,18 @@ public class IndexController {
     @Autowired
     TestBeanService testService;
 
+    @Autowired
+    TestBean testBean;
+
+    @Autowired
+    TestBean2 testBean2;
+
     @Value("${demo.app-name}")
     String appName;
 
     @GetMapping("/hello")
     public String hello(@RequestParam String name) {
-        return "hello " + name;
+        return "hello " + name + testBean.getAttrA();
     }
 
     @GetMapping("/" )
