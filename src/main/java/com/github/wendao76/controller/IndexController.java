@@ -1,12 +1,12 @@
 package com.github.wendao76.controller;
 
 import com.github.wendao76.component.ApplicationContextUtil;
+import com.github.wendao76.module.bean.TestBean;
 import com.github.wendao76.service.TestBeanService;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.ApplicationContext;
-import org.springframework.context.ApplicationContextAware;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -27,6 +27,9 @@ public class IndexController {
 
     @Value("${demo.app-name}")
     String appName;
+
+    @Autowired
+    TestBean testBean;
 
     @GetMapping("/hello")
     public String hello(@RequestParam String name) {

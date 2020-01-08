@@ -1,14 +1,11 @@
-package com.github.wendao76.service;
+package com.github.wendao76.module.bean;
 
 
 import org.springframework.beans.factory.FactoryBean;
-import org.springframework.core.Ordered;
-import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 @Component
-@Order(5)
-public class TestFactoryBean implements FactoryBean<TestBean>, Ordered {
+public class TestFactoryBean implements FactoryBean<TestBean> {
 
     @Override
     public TestBean getObject() throws Exception {
@@ -20,11 +17,8 @@ public class TestFactoryBean implements FactoryBean<TestBean>, Ordered {
 
     @Override
     public Class<?> getObjectType() {
+//        System.out.println("TestFactoryBean.getObjectType");
         return TestBean.class;
     }
 
-    @Override
-    public int getOrder() {
-        return 5;
-    }
 }
